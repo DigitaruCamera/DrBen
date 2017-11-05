@@ -766,6 +766,29 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d4757b1830263a144bdfba08b5acfba3, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &371774056 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1433500977598140, guid: 3c8c7a44af093c942b943dcd4ea240a0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1740635189}
+--- !u!111 &371774062
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 371774056}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: d862298cf2427014aa79f59510e12784, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 61ab757f16721844993da2c3ccda6764, type: 2}
+  - {fileID: 7400000, guid: d862298cf2427014aa79f59510e12784, type: 2}
+  - {fileID: 7400000, guid: 2b3be4fb48c0e3f41870118a0e3be2cb, type: 2}
+  - {fileID: 7400000, guid: 31239910f7a54094bb6c7b2ebf19fef9, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &376452961
 GameObject:
   m_ObjectHideFlags: 0
@@ -3353,7 +3376,14 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 299.4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 50851483133559228, guid: 3c8c7a44af093c942b943dcd4ea240a0,
+        type: 2}
+      propertyPath: m_Mass
+      value: 15
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 111461457252618446, guid: 3c8c7a44af093c942b943dcd4ea240a0, type: 2}
+    - {fileID: 95264079432916258, guid: 3c8c7a44af093c942b943dcd4ea240a0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 3c8c7a44af093c942b943dcd4ea240a0, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1765006495

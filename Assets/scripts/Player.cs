@@ -41,15 +41,19 @@ public class Player : MonoBehaviour
         if (Input.GetAxis("Horizontal" + playercontrol) > 0.1)
         {
             print("walk");
-            GetComponent<Animation>().Play("walk");
+            if (GetComponent<Animation>().isPlaying)
+            {
+                GetComponent<Animation>().Play("walk");
+            }
+            GetComponent<SpriteRenderer>().flipX = false;
             transform.GetChild(1).position = transform.position + new Vector3(0.4f, 0, 0);
         } else if (Input.GetAxis("Horizontal" + playercontrol) < -0.1)
         {
             GetComponent<Animation>().Play("walk");
+            GetComponent<SpriteRenderer>().flipX = true;
             transform.GetChild(1).position = transform.position + new Vector3(-0.4f, 0, 0);
         } else
         {
-            GetComponent<Animation>().Play("idle");
         }
         bool falling = transform.GetChild(0).gameObject.GetComponent<coll_player>().falling;
         if (falling == true && rg.gravityScale <= 9.81f)
@@ -87,6 +91,7 @@ public class Player : MonoBehaviour
     float delay_death = 2;
     void life()
     {
+        print(GetComponent<Animation>().isPlaying);
         Rigidbody2D rg = GetComponent<Rigidbody2D>();
         if (HP > 0)
         {
