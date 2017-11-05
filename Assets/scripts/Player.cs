@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public float jumps = 2;
     public int HPMax = 3;
     public GameObject dead;
+    public AudioClip jump_sound;
     public Text best_score;
     public Text hp_ui;
     public Text points_ui;
@@ -40,7 +41,6 @@ public class Player : MonoBehaviour
         }
         if (Input.GetAxis("Horizontal" + playercontrol) > 0.1)
         {
-            print("walk");
             if (GetComponent<Animation>().isPlaying)
             {
                 GetComponent<Animation>().Play("walk");
@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
         {
         }
         bool falling = transform.GetChild(0).gameObject.GetComponent<coll_player>().falling;
-        if (falling == true && rg.gravityScale <= 9.81f)
+        if (falling == true && rg.gravityScale <= 25.81f)
         {
             rg.gravityScale += Time.deltaTime * 50;
         }
@@ -65,16 +65,17 @@ public class Player : MonoBehaviour
             jumps = 2;
             rg.gravityScale = 0.3f;
         }
-        else if (rg.gravityScale > 9.81f)
+        else if (rg.gravityScale > 25.81f)
         {
-            rg.gravityScale = 9.81f;
+            rg.gravityScale = 25.81f;
         }
         if (Input.GetButtonDown("Fire1" + playercontrol) && jumps > 0)
         {
+            GetComponent<AudioSource>().PlayOneShot(jump_sound);
             GetComponent<Animation>().Play("jump");
             delayed_time = Time.time + 0.1f;
             jumps--;
-            rg.gravityScale = -40;
+            rg.gravityScale = -35;
         }
     }
 
@@ -91,7 +92,6 @@ public class Player : MonoBehaviour
     float delay_death = 2;
     void life()
     {
-        print(GetComponent<Animation>().isPlaying);
         Rigidbody2D rg = GetComponent<Rigidbody2D>();
         if (HP > 0)
         {
@@ -114,6 +114,7 @@ public class Player : MonoBehaviour
             if (GameObject.FindGameObjectsWithTag("Player").Length <= 1)
             {
                 best_score.text = "DEAD\nbest score : " + PlayerPrefs.GetFloat("best");
+                Time.timeScale = 0;
                 dead.SetActive(true);
             }
             Destroy(gameObject);

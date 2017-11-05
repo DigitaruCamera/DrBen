@@ -16,7 +16,7 @@ public class back : MonoBehaviour {
     {
         if (collision.gameObject.tag == "map" || collision.gameObject.tag == "enemy" || collision.gameObject.tag == "points")
         {
-            Destroy(collision.gameObject, 3);
+            Destroy(collision.gameObject, 7);
             Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>());
         }
     }
